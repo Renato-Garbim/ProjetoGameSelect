@@ -1,0 +1,70 @@
+﻿@model GameMVC.Models.JogoModel.JogoViewModel
+
+@{
+    ViewData["Title"] = "Lista Jogos";
+}
+
+<div class="card" id="lista">
+
+    <div class="card-header card-header-icon" data-background-color="dark-blue">
+        <i class="material-icons">view_list</i>
+    </div>
+
+    <div class="card-body">
+
+        <form asp-area="Operacional" asp-controller="Fatura" asp-action="Cancelar" asp-antiforgery="true" id="Lista-Jogos">
+
+            @if (Model.Lista.Any())
+            {
+                <div class="table-responsive">
+
+                    <table class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width: 100%">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Ano
+                                </th>
+                                <th>
+                                    Titulo
+                                </th>
+                                <th>
+                                    Nota
+                                </th>                                
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Lista)
+                            {
+                                <tr>
+                                    <td>@item.ano</td>
+                                    <td>@item.titulo</td>
+                                    <td>@item.nota</td>                                    
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+            }
+            else
+            {
+                <div class="dados-pendentes">
+                    <h4 class="text-center">Clique no botão abaixo e cadastre um novo registro.</h4>
+                </div>
+            }
+
+            <hr />
+
+            <div class="pull-right">
+
+                <button class="btn btn-custom-adicionar pull-right cancel" onclick="document.getElementById('Lista-Jogos').action = '@Url.Action("Adicionar", "Game")';">
+                    Adicionar Novo Jogo
+                </button>
+
+            </div>
+        </form>
+
+    </div>
+
+</div>

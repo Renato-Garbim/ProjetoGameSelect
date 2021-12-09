@@ -1,0 +1,61 @@
+﻿using System;
+using System.Linq;
+using AutoMapper;
+
+namespace Mercurio.WebApp.CrossCutting.AutoMapper
+{
+    public static class IgnoreVirtualExtensions
+    {
+        public static IMappingExpression<TSource, TDestination> IgnoreAllVirtual<TSource, TDestination>(this IMappingExpression<TSource, TDestination> expression)
+        {
+            var desType = typeof(TDestination);
+            foreach (var property in desType.GetProperties().Where(p => p.GetGetMethod().IsVirtual))
+            {
+                expression.ForMember(property.Name, opt => opt.Ignore());
+            }
+
+            return expression;
+        }
+
+        private static void IgnoreUnmappedProperties(TypeMap map, IMappingExpression expr)
+        {
+            foreach (string propName in map.GetUnmappedPropertyNames())
+            {
+                if (map.SourceType.GetProperty(propName) != null)
+                {
+                    expr.ForSourceMember(propName, opt => opt.DoNotValidate());
+                }
+                if (map.DestinationType.GetProperty(propName) != null)
+                {
+                    expr.ForMember(propName, opt => opt.Ignore());
+                }
+            }
+        }
+
+        public static void IgnoreUnmapped(this IProfileExpression profile)
+        {
+            profile.ForAllMaps(IgnoreUnmappedProperties);
+        }
+
+        public static void IgnoreUnmapped(this IProfileExpression profile, Func<TypeMap, bool> filter)
+        {
+            profile.ForAllMaps((map, expr) =>
+            {
+                if (filter(map))
+                {
+                    IgnoreUnmappedProperties(map, expr);
+                }
+            });
+        }
+
+        public static void IgnoreUnmapped(this IProfileExpression profile, Type src, Type dest)
+        {
+            profile.IgnoreUnmapped((TypeMap map) => map.SourceType == src && map.DestinationType == dest);
+        }
+
+        public static void IgnoreUnmapped<TSrc, TDest>(this IProfileExpression profile)
+        {
+            profile.IgnoreUnmapped(typeof(TSrc), typeof(TDest));
+        }
+    }
+}

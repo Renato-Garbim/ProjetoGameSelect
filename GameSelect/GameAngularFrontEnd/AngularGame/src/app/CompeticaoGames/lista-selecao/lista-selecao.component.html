@@ -1,0 +1,20 @@
+
+<form [formGroup]="form" (ngSubmit)="submit()">
+
+    <ul  class="list-group m-2">
+        <li class="list-group-item" formArrayName="orders" *ngFor="let EntidadeGame of ListaJogos;">
+    
+            <input type="checkbox" [value]="EntidadeGame.titulo" (change)="onCheckChange($event, EntidadeGame)">
+                {{EntidadeGame.titulo}} - {{EntidadeGame.ano}}
+              
+        </li>
+      </ul>
+
+    <button>submit</button>
+
+  </form>
+
+
+
+
+  <router-outlet></router-outlet>

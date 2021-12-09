@@ -1,0 +1,8 @@
+
+
+add-migration Dev-Renato-AtualizacaoEntidadeGame -project Game.Infra -context GameContext -start GameMVC -verbose
+
+
+
+add-migration Initial_Schemma -project Game.Infra -context GameContext -start GameMVC -verbose
+update-database -project Game.Infra -context GameContext -start GameMVC -verbose

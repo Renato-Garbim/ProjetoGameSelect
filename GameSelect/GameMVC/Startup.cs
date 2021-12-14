@@ -27,7 +27,8 @@ namespace GameMVC
         {
             services.StartDbContext(Configuration);
 
-            services.AddControllersWithViews();           
+            services.AddControllersWithViews();
+            services.AddRazorPages();
             services.StartRegisterServices();
         }
 

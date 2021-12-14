@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -34,9 +35,9 @@ namespace Game.Infra.Repositories
             GC.SuppressFinalize(this);
         }
 
-        private async void AlterarBanco()
+        private void AlterarBanco()
         {
-            await Db.SaveChangesAsync();
+            Db.SaveChanges();
         }
 
         public virtual IQueryable<TEntity> GetAllRecords()
@@ -53,6 +54,7 @@ namespace Game.Infra.Repositories
             {
                 DBSet.Add(obj);
                 AlterarBanco();
+                
                 inseridoSucesso = true;
             }
             catch(DbUpdateException /* ex */)
@@ -71,6 +73,7 @@ namespace Game.Infra.Repositories
             {
                 DBSet.Update(obj);
                 AlterarBanco();
+                
                 updateSucesso = true;
             }
             catch (DbUpdateException /* ex */)
@@ -83,6 +86,47 @@ namespace Game.Infra.Repositories
             return updateSucesso;
         }
 
+        public virtual bool RemoveRecord(TEntity obj)
+        {
+
+            var removidoSucesso = false;
+
+            try
+            {
+                DBSet.Remove(obj);
+                AlterarBanco();
+                
+                removidoSucesso = true;
+            }
+            catch (DbUpdateException /* ex */)
+            {
+                removidoSucesso = false;
+            }
+                                                   
+            return removidoSucesso;
+        }
+
+        public virtual TEntity GetRecordById(int id)
+        {
+            var registro = DBSet.Find(id);
+            
+            return  registro;
+        }
+
+        public virtual TEntity GetRecordById(Guid id)
+        {
+            var guid = id.ToString();
+
+            var propertyInfo = typeof(TEntity).GetProperty(typeof(TEntity).Name + "Guid");  
+
+            Expression<Func<TEntity, bool>> func = x => propertyInfo.GetValue("") == guid;
+            
+            //todo: necessário estudar o código de expression funcs e a biblioteca do DynamicLinq para conseguir utilizar o generics.
+
+            var registro = DBSet.FirstOrDefault(func);
+
+            return registro;
+        }
 
     }
 }

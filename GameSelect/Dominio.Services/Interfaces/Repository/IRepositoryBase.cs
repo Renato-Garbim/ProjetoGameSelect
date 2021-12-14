@@ -11,5 +11,8 @@ namespace Dominio.Service.Interfaces.Repository
         IQueryable<TEntity> GetAllRecords();
         bool InsertRecord(TEntity obj);
         bool UpdateRecord(TEntity obj);
+        bool RemoveRecord(TEntity obj);
+        TEntity GetRecordById(int id);
+        TEntity GetRecordById(Guid id);
     }
 }

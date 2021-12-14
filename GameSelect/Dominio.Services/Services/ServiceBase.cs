@@ -31,5 +31,20 @@ namespace Dominio.Service.Services
         {
             return _repository.GetAllRecords();
         }
+
+        public TEntity GetRecordById(int id)
+        {
+            return _repository.GetRecordById(id);
+        }
+
+        public TEntity GetRecordById(Guid id)
+        {
+            return _repository.GetRecordById(id);
+        }
+
+        public bool RemoveRecord(TEntity registro)
+        {
+            return _repository.RemoveRecord(registro);
+        }
     }
 }

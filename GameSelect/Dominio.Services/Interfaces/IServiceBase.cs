@@ -10,5 +10,8 @@ namespace Dominio.Service.Interfaces
         bool InsertRecord(TEntity objeto);
         bool UpdateRecord(TEntity objeto);
         IQueryable<TEntity> GetAllRecords();
+        TEntity GetRecordById(int id);
+        TEntity GetRecordById(Guid id);
+        bool RemoveRecord(TEntity registro);
     }
 }

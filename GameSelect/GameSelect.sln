@@ -34,7 +34,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - Notes", "0 - Notes", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Game.Application", "Game.Application\Game.Application.csproj", "{E982C447-EEFF-4F13-9187-31AE7F2CF75C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game.CrossCutting.AutoMapper", "Game.CrossCutting.AutoMapper\Game.CrossCutting.AutoMapper.csproj", "{CB2DE840-B225-4DBB-9860-925929F3D477}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Game.CrossCutting.AutoMapper", "Game.CrossCutting.AutoMapper\Game.CrossCutting.AutoMapper.csproj", "{CB2DE840-B225-4DBB-9860-925929F3D477}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game.Domain.Entities.Teste", "Game.Domain.Entities.Teste\Game.Domain.Entities.Teste.csproj", "{AF57B2A3-3787-4D24-A23A-ECA36539F0B4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -78,6 +80,10 @@ Global
 		{CB2DE840-B225-4DBB-9860-925929F3D477}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CB2DE840-B225-4DBB-9860-925929F3D477}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CB2DE840-B225-4DBB-9860-925929F3D477}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF57B2A3-3787-4D24-A23A-ECA36539F0B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF57B2A3-3787-4D24-A23A-ECA36539F0B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF57B2A3-3787-4D24-A23A-ECA36539F0B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF57B2A3-3787-4D24-A23A-ECA36539F0B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -92,6 +98,7 @@ Global
 		{CBEF6028-2A45-4D8F-A50C-E8D93F22D6EE} = {A44CABDA-73EF-4E93-9692-E701A09759C1}
 		{E982C447-EEFF-4F13-9187-31AE7F2CF75C} = {E1018BDE-95F9-4A9B-8407-920615948A1A}
 		{CB2DE840-B225-4DBB-9860-925929F3D477} = {E1018BDE-95F9-4A9B-8407-920615948A1A}
+		{AF57B2A3-3787-4D24-A23A-ECA36539F0B4} = {DF8B53AA-7669-49BC-B1F8-B8D737BAD021}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4D51ABF8-9180-4557-A3CA-9DD0643C8FE7}

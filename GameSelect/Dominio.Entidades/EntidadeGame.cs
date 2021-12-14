@@ -24,7 +24,12 @@ namespace Dominio.Entidades
             nota = Nota;
         }
 
+        public bool EntidadeEhValida()
+        {
 
+
+            return false;
+        }
     }
 
    

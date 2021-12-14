@@ -66,7 +66,8 @@ namespace Game.Application.Services
 
         public bool Remover(int registroId)
         {
-            throw new NotImplementedException();
+            var registro = _cashbackServiceBase.GetRecordById(registroId);
+            return _cashbackServiceBase.RemoveRecord(registro);
         }
 
         public bool Remover(Guid registroId)
@@ -76,12 +77,14 @@ namespace Game.Application.Services
 
         public TEntityDTO ObterPorId(int registroId)
         {
-            throw new NotImplementedException();
+            var registro = _cashbackServiceBase.GetRecordById(registroId);
+            return Mapper.Map<TEntityDTO>(registro);
         }
-
+       
         public TEntityDTO ObterPorId(Guid registroId)
         {
-            throw new NotImplementedException();
+            var registro = _cashbackServiceBase.GetRecordById(registroId);
+            return Mapper.Map<TEntityDTO>(registro);
         }
 
         public IEnumerable<TEntityDTO> ObterTodos()

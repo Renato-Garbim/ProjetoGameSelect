@@ -33,14 +33,13 @@ namespace Game.Infra.Context
 
         private static void ApplyDefaultConfiguration(ModelBuilder modelBuilder)
         {
-
             foreach (var property in modelBuilder.Model.GetEntityTypes().SelectMany(t => t.GetProperties()).Where(p =>
                 p.ClrType == typeof(string) && p.Name.Equals(p.FieldInfo.ReflectedType?.Name + "Id")))
                 property.IsKey();
-            
-            //foreach (var property in modelBuilder.Model.GetEntityTypes().SelectMany(t => t.GetProperties()).Where(p => p.ClrType == typeof(decimal))) 
-            //    property.SetColumnType("decimal(18, 2)");
-           
+
+            foreach (var property in modelBuilder.Model.GetEntityTypes().SelectMany(t => t.GetProperties()).Where(p => p.ClrType == typeof(Guid)))
+                property.SetMaxLength(36);
+
             foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
                 relationship.DeleteBehavior = DeleteBehavior.Restrict;                       
 

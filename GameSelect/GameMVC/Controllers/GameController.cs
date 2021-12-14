@@ -32,5 +32,26 @@ namespace GameMVC.Controllers
 
             return View(model);
         }
+
+        public IActionResult Editar(int id)
+        {
+            var model = new JogoEditModel();
+
+            model.Registro = _appService.ObterPorId(id);
+
+            return View(model);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Salvar(JogoEditModel model)
+        {
+            var result = _appService.AdicionarOuAtualizar(model.Registro);
+
+            if (!result) return RedirectToAction("Editar", new { id = model.Registro.EntidadeGameId });
+
+            return RedirectToAction("Index");
+        }
     }
 }

@@ -1,0 +1,68 @@
+﻿@model GameMVC.Models.JogoModel.JogoEditModel
+
+@{
+    ViewData["Title"] = "Adicionar - Novo Jogo";
+}
+
+<div class="card" id="lista">
+
+    <div class="card-header card-header-icon" data-background-color="dark-blue">
+        <i class="material-icons">view_list</i>
+    </div>
+
+    <div class="card-body">
+
+        <form asp-controller="Game" asp-action="Cancelar" asp-antiforgery="true" id="Formulario-Jogo">
+
+            @Html.HiddenFor(x => x.Registro.EntidadeGameId)
+            @Html.HiddenFor(x => x.Registro.EntidadeGameGuid)
+
+            <div class="row">
+
+                <div class="col">
+                    <div class="form-group">
+
+                        <span class="text-warning">* </span>
+                        <label class="" asp-for="Registro.titulo"></label>
+
+                        <input type="text" asp-for="Registro.titulo" class="form-control" autofocus="" />
+                        <span class="text-danger" asp-validation-for="Registro.titulo"></span>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="form-group">
+                        <span class="text-warning">*</span>
+                        <label class="" asp-for="Registro.ano" autofocus=""></label>
+                        <input type="text" asp-for="Registro.ano" class="form-control" autofocus="" />
+                        <span class="text-danger" asp-validation-for="Registro.ano"></span>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="form-group">
+                        <span class="text-warning">*</span>
+                        <label class="" asp-for="Registro.nota" autofocus=""></label>
+                        <input type="text" asp-for="Registro.nota" class="form-control" autofocus="" />
+                        <span class="text-danger" asp-validation-for="Registro.nota"></span>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+            <hr />
+
+            <div class="pull-right">
+
+                <button class="btn btn-custom-adicionar pull-right cancel" onclick="document.getElementById('Formulario-Jogo').action = '@Url.Action("Salvar", "Game")';">
+                    Salvar Alterações
+                </button>
+
+            </div>
+        </form>
+
+    </div>
+
+</div>

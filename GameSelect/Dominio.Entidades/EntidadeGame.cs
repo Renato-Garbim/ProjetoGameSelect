@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dominio.Entidades.Scopes;
+using System;
 
 namespace Dominio.Entidades
 {
@@ -26,9 +27,8 @@ namespace Dominio.Entidades
 
         public bool EntidadeEhValida()
         {
-
-
-            return false;
+            var scopeValidation = new EntidadeGameScopes();            
+            return scopeValidation.EhValido(this);
         }
     }
 

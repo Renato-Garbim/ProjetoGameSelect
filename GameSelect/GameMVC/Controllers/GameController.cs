@@ -1,4 +1,5 @@
 ﻿using Game.Application.Interface;
+using Game.DTO;
 using GameMVC.Models.JogoModel;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -52,6 +53,14 @@ namespace GameMVC.Controllers
             if (!result) return RedirectToAction("Editar", new { id = model.Registro.EntidadeGameId });
 
             return RedirectToAction("Index");
+        }
+
+        public IActionResult Adicionar()
+        {
+            var model = new JogoEditModel();
+            model.Registro = new EntidadeGameDTO();
+                            
+            return View(model);
         }
     }
 }

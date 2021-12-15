@@ -18,7 +18,7 @@ namespace GameSelect.StartUp
             // Core
             GameBootstrapper.RegisterServices(services);
 
-            var defaultContainer = services.BuildServiceProvider();
+            //var defaultContainer = services.BuildServiceProvider();
             
             return services;
         }

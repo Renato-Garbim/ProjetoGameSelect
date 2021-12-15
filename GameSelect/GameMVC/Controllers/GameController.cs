@@ -55,6 +55,16 @@ namespace GameMVC.Controllers
             return RedirectToAction("Index");
         }
 
+        
+        public IActionResult Excluir(int id)
+        {
+            var result = _appService.Remover(id);
+
+            if (!result) return RedirectToAction("Index");
+
+            return RedirectToAction("Index");
+        }
+
         public IActionResult Adicionar()
         {
             var model = new JogoEditModel();

@@ -45,8 +45,8 @@
                                                 onclick="document.getElementById('Lista-Jogos').action = '@Url.Action("Editar", "Game", new {id = @item.EntidadeGameId})';">
                                             <i class="material-icons">edit</i>
                                         </button>
-                                        <button type="button" class="btn btn-td-action btn-danger cancel" title="Excluir registro" data-toggle="tooltip" data-placement="bottom" 
-                                                onclick="ExcluirRegistro('@item.EntidadeGameGuid', 'Lista-Parametrizacao-Exame', 'Parametrizacao/Exame/Excluir', 'Parametrizacao/Exame/Recarregar')">
+                                        <button class="btn btn-td-action btn-danger cancel" title="Excluir registro"
+                                                onclick="document.getElementById('Lista-Jogos').action = '@Url.Action("Excluir", "Game", new {id = @item.EntidadeGameId})';">
                                             <i class="material-icons">delete_forever</i>
                                         </button>
                                     </td>

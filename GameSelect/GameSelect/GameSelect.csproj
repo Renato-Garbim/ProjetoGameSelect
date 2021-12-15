@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>32dd70f3-c337-4c0a-b5b4-9f0d7f64922f</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Game.CrossCutting.AutoMapper\Game.CrossCutting.AutoMapper.csproj" />
     <ProjectReference Include="..\Game.DTO\Game.DTO.csproj" />
     <ProjectReference Include="..\Game.IoC\Game.CrossCutting.IoC.csproj" />
   </ItemGroup>

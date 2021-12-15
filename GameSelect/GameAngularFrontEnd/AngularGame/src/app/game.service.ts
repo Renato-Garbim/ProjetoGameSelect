@@ -16,7 +16,7 @@ export class GameService {
   listaDeVencedores : EntidadeGame[] = [];
 
   readonly APIBaseDados = "https://l3-processoseletivo.azurewebsites.net/api/Competidores?copa=games";
-  readonly APIDominio = "https://localhost:44329/Game";
+  readonly APIDominio = "https://localhost:5001/Game";
 
   constructor(private http:HttpClient, private messageService: MessageService) { }
 
